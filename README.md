@@ -1,46 +1,76 @@
-# Getting Started with Create React App
+# General
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This program is made with `React - JavaScript/TypeScript`, `React-redux`.<br/>
+When you click the start button, the app allocates ships randomly.<br/>
+Once players hit all the ships, the app ask players to re-start the game.
 
-## Available Scripts
+### Prerequisite
 
-In the project directory, you can run:
+```
+npm install
+```
 
-### `npm start`
+### Run
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Test
 
-### `npm test`
+```
+npm test
+// Press 'a' to run all tests
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Node & npm version
 
-### `npm run build`
+- npm ^@8.15.0
+- node ^@18.7.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Highlights
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Ship allocation**
 
-### `npm run eject`
+To allocate ships randomly, the program tries to pick the position of a ship randomly and check the validation of the position, if it is not valid, it tries again. I let it try to allocate ships 100 times per ship in `assignShipPosition function`. If the app failed to allocate positions, it throws an error.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **React-redux**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I used react-redux for state management. GamseStatus has the properties below:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **status**: status of the current game
+- **turn**: index of the current turn player
+- **mapSize**: map size [x, y]
+- **map**:
+  - **key**: string of position array ([x, y])
+  - **value**:
+    - **ship**: allocated ship in that cell or null
+    - **hit**: the cell is hit or not
+- **ships**: array of shipTypes
+  - **name**: name of a ship
+  - **size**: number of cell counts that a ship takes
+  - **pointPerShot**: point that a player will get once a player hit the ship position
+  - **hitCount**: number of cells that is hitted
 
-## Learn More
+### **map**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Map object has a position([x, y]) string as a key.
+So when a player clicked a cell, we can find a value (allocated ship, hit) of the position in log(N).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+
+### **Test**
+
+Tests are covering the unit tests of redux reducers.
+
+<br/>
+<br/>
+
+# Thought
+
+- Thank you for giving me an opportunity to take such a fun coding challenge 🤣
