@@ -1,9 +1,10 @@
 import React from "react";
+import StartModal from "./components/StartModal";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <StartModal />
     </div>
   );
 }
