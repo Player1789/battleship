@@ -1,9 +1,10 @@
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
-import { selectGameState } from "../../features/game/gameSlice";
+import { gameActions, selectGameState } from "../../features/game/gameSlice";
 import styles from "./Map.module.css";
 import miss from "../../assets/Miss.png";
 import hit from "../../assets/Hit.png";
+import { useDispatch } from "react-redux";
 
 interface IProps {
   x: number;
@@ -12,6 +13,8 @@ interface IProps {
 
 const Cell: React.FC<IProps> = ({ x, y }) => {
   const { map } = useAppSelector(selectGameState);
+  const dispatch = useDispatch();
+  const { cellClicked } = gameActions;
 
   const cellData = map[[x, y].toString()];
 
@@ -24,7 +27,11 @@ const Cell: React.FC<IProps> = ({ x, y }) => {
     backgroundImage = `url(${miss})`;
   }
 
-  const onClick = () => {};
+  const onClick = () => {
+    if (!cellData || !cellData.hit) {
+      dispatch(cellClicked({ x, y }));
+    }
+  };
 
   return (
     <div
