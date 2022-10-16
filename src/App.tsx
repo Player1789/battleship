@@ -3,6 +3,7 @@ import ScoreBoard from "./components/ScoreBoard";
 import Ships from "./components/Ships";
 import StartModal from "./components/StartModal";
 import styles from "./App.module.css";
+import Map from "./components/Map";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <ScoreBoard />
         <Ships />
       </div>
+      <Map />
       <StartModal />
     </div>
   );
