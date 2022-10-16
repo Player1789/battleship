@@ -4,6 +4,7 @@ import Ships from "./components/Ships";
 import StartModal from "./components/StartModal";
 import styles from "./App.module.css";
 import Map from "./components/Map";
+import FinishModal from "./components/FinishModal";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </div>
       <Map />
       <StartModal />
+      <FinishModal />
     </div>
   );
 }
