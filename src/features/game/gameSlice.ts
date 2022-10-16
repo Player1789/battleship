@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import reducers from "./reducers";
 
 export type shipType = {
   name: string;
@@ -74,7 +75,7 @@ export const initialGameState: GameState = {
 export const gameSlice = createSlice({
   name: "game",
   initialState: initialGameState,
-  reducers: {},
+  reducers,
 });
 
 export const gameActions = gameSlice.actions;
